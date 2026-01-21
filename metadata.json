@@ -1,0 +1,5 @@
+{
+  "name": "Secure Voting System",
+  "description": "A secure, step-by-step voting application with pre-defined voter authentication.",
+  "requestFramePermissions": []
+}
