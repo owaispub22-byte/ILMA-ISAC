@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#06152e">
+<title>ILMA Tickets</title>
+<style>
+html,body{margin:0;min-height:100%;font-family:Arial,sans-serif;background:#06152e;color:white}#loading{min-height:100vh;display:grid;place-items:center;text-align:center;padding:24px;box-sizing:border-box}.box{max-width:520px}.spin{width:44px;height:44px;border:4px solid rgba(255,255,255,.2);border-top-color:#f0c94a;border-radius:50%;margin:0 auto 18px;animation:s 1s linear infinite}@keyframes s{to{transform:rotate(360deg)}}h2{margin:0 0 8px}p{opacity:.75;line-height:1.5}</style>
+</head>
+<body>
+<div id="loading"><div class="box"><div class="spin"></div><h2>ILMA Tickets</h2><p>Loading secure ticketing app…</p></div></div>
+<script>
+(async()=>{
+  try{
+    const r=await fetch('https://hqzsmfeckjoxhoktpdyy.supabase.co/functions/v1/ilma-ticket-app?raw=1',{cache:'no-store'});
+    if(!r.ok) throw new Error('Unable to load app');
+    const html=await r.text();
+    document.open();
+    document.write(html);
+    document.close();
+  }catch(e){
+    document.getElementById('loading').innerHTML='<div class="box"><h2>App temporarily unavailable</h2><p>Please refresh the page. If the problem continues, contact the ILMA event administrator.</p></div>';
+  }
+})();
+</script>
+</body>
+</html>
